@@ -48,8 +48,8 @@ form dl dd {
 </form>
 <script>
     function calc(lastscore, level) {
-        const fastscore_value = document.getElementById('fastscore').value = Math.round(fastscore_value + level);
-        const level100_value = document.getElementById('level100').value = Math.round(level100_value);
+        const fastscore_value = document.getElementById('fastscore').value = Math.round(lastscore + level);
+        const level100_value = document.getElementById('level100').value = Math.round(lastscore_value);
 
     }
 </script>
