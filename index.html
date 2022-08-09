@@ -41,7 +41,7 @@ form dl dd {
         <p><input type="button" class="calc-btn" onclick="calc(lastscore.value, level.value);" value="計算"></p>
         
         <dt>素点：</dt>
-        <dd><input id="fastscore" class="box" type="text" readonly=""></dd>
+        <dd><input id="fastscore" class="box" type="number" readonly=""></dd>
         <dt>レベル１００のスコア：</dt>
         <dd><input id="level100" class="box" type="text" readonly=""></dd>
     </dl>
@@ -49,7 +49,7 @@ form dl dd {
 <script>
     function calc(lastscore, level) {
         const fastscore_value = document.getElementById('fastscore').value = Math.round(lastscore + level);
-        const level100_value = document.getElementById('level100').value = Math.round(lastscore_value);
+        const level100_value = document.getElementById('level100').value = Math.round(lastscore);
 
     }
 </script>
