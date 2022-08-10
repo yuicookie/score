@@ -34,10 +34,6 @@ form dl dd {
     cursor: pointer;
 }
 </style>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-</head>
 <form class="diet_form">
     <dl>
         <dt>スコア：</dt>
@@ -53,7 +49,6 @@ form dl dd {
     </dl>
 </form>
 <script>
-    document.getElementById('viewport').setAttribute('content', 'width=360,initial-scale=1');
     function calc(lastscore, level) {
         const fastscore_value = document.getElementById('fastscore').value = Math.round(lastscore + level);
         const level100_value = document.getElementById('level100').value = Math.round(lastscore);
