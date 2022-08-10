@@ -1,7 +1,7 @@
 <style>
 .diet_form {
     background: #eaf4ff;
-    padding: 10px 15px;
+    padding: 10px 10px;
     width: 330px;
     height: 330px;
 }
@@ -25,7 +25,7 @@ form dl dd {
 }
 .calc-btn {
     width: 80px;
-    height: 30px;
+    height: 40px;
     border: 1px solid #333;
 }
 .calc-btn:hover {
@@ -213,7 +213,7 @@ bonus = 1.54;
       level = 0;
     }
 
-      let fastscore_value = document.getElementById('fastscore').value = Math.floor(lastscore / level);
+      let fastscore_value = document.getElementById('fastscore').value = Math.ceil(lastscore / level);
       let level100_value = document.getElementById('level100').value = Math.floor(fastscore_value * bonus);
   }
 
