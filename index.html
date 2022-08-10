@@ -4,6 +4,9 @@
 .diet_form {
     background: #eaf4ff;
     padding: 10px 30px;
+    width: 350px;
+    height: 350px;
+
 }
 form dl dt {
     width: 200px;
@@ -39,10 +42,10 @@ form dl dd {
         <dt>現在のレベル：</dt>
         <dd><input type="number" class="box" name="level"></dd>
         <p><input type="button" class="calc-btn" onclick="calc(lastscore.value, level.value);" value="計算"></p>
-        
+
         <dt>素点：</dt>
         <dd><input id="fastscore" class="box" type="number" readonly=""></dd>
-        <dt>レベル１００のスコア：</dt>
+        <dt>レベル100のスコア：</dt>
         <dd><input id="level100" class="box" type="text" readonly=""></dd>
     </dl>
 </form>
