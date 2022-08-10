@@ -32,6 +32,8 @@ form dl dd {
     cursor: pointer;
 }
 </style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<h1>スコア計算表</h1>
 <form class="diet_form">
     <dl>
         <dt>スコア：</dt>
@@ -46,9 +48,6 @@ form dl dd {
         <dd><input id="level100" class="box" type="text" readonly=""></dd>
     </dl>
 </form>
-<script>
-  window.resizeTo(300, 300);
-</script>
 <script>
     function calc(lastscore, level) {
         const fastscore_value = document.getElementById('fastscore').value = Math.round(lastscore + level);
