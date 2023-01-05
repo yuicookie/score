@@ -1,4 +1,28 @@
 function calc(lastscore, level) {
+  oku1 = 0; man2 = 0; num2 = 0;
+  oku = lastscore;
+  man = lastscore;
+  num = lastscore;
+  if (oku.includes('億')) {
+    oku1 = oku.substr(0, oku.indexOf('億'));
+    oku1 = oku1 * 100000000;
+    num1 = num.substr(num.indexOf('億') + 1)
+    num2 = num1 * 1;
+    lastscore = oku1 + man2 + num2;
+  }
+
+  if (man.includes('万')) {
+    man1 = man;
+    if (man.includes('億')) {
+    man1 = man.substr(man.indexOf('億') + 1)
+    }
+    man2 = man1.substr(0, man1.indexOf('万'));
+    man2 = man2 * 10000;
+    num1 = num.substr(num.indexOf('万') + 1)
+    num2 = num1 * 1;
+    lastscore = oku1 + man2 + num2;
+  }
+
   switch (level) {
     case '100':
     level = 1.54;
