@@ -13,15 +13,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <form class="diet_form">
       <dl>
-          <dt>スコア：</dt>
-          <dd><input type="number" class="box" name="lastscore"></dd>
+          <dt>目標スコア：</dt>
+          <dd><input class="box" name="lastscore" placeholder="1億3千万"></dd>
           <dt>現在のレベル：</dt>
-          <dd><input type="number" class="box" name="level"></dd>
+          <dd><input type="number" class="box" name="level" value="100"></dd>
           <p><input type="button" class="calc-btn" onclick="calc(lastscore.value, level.value);" value="計算"></p>
 
           <dt>素点：</dt>
-          <dd><input id="fastscore" class="box" type="number" readonly=""></dd>
-          <dt>レベル100のスコア：</dt>
+          <dd><input id="fastscore" class="box" readonly=""></dd>
+          <dt>スコア追加15%あり：</dt>
           <dd><input id="level100" class="box" type="text" readonly=""></dd>
       </dl>
   </form>
