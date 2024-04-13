@@ -3,12 +3,13 @@ function calc(lastscore, level) {
   oku = lastscore;
   man = lastscore;
   num = lastscore;
+  lastscore_value = 0;
   if (oku.includes('億')) {
     oku1 = oku.substr(0, oku.indexOf('億'));
     oku1 = oku1 * 100000000;
     num1 = num.substr(num.indexOf('億') + 1)
     num2 = num1 * 1;
-    lastscore = oku1 + man2 + num2;
+    lastscore_value = oku1 + man2 + num2;
   }
 
   if (man.includes('万')) {
@@ -20,9 +21,11 @@ function calc(lastscore, level) {
     man2 = man2 * 10000;
     num1 = num.substr(num.indexOf('万') + 1)
     num2 = num1 * 1;
-    lastscore = oku1 + man2 + num2;
+    lastscore_value = oku1 + man2 + num2;
   }
 
+  bonus = 1.54;
+  level_save = level;
   switch (level) {
     case '100':
     level = 1.54;
@@ -177,13 +180,202 @@ function calc(lastscore, level) {
     case '50':
     level = 1.49;
       break;
+    case '49':
+    level = 1.48;
+      break;
+    case '48':
+    level = 1.47;
+      break;
+    case '47':
+    level = 1.46;
+      break;
+    case '46':
+    level = 1.45;
+      break;
+    case '45':
+    level = 1.44;
+      break;
+    case '44':
+    level = 1.43;
+      break;
+    case '42':
+    level = 1.41;
+      break;
+    case '41':
+    level = 1.4;
+      break;
+    case '40':
+    level = 1.39;
+      break;
+    case '39':
+    level = 1.38;
+      break;
+    case '38':
+    level = 1.37;
+      break;
+    case '37':
+    level = 1.36;
+      break;
+    case '36':
+    level = 1.35;
+      break;
+    case '35':
+    level = 1.34;
+      break;
+    case '34':
+    level = 1.33;
+      break;
+    case '33':
+    level = 1.32;
+      break;
+    case '32':
+    level = 1.31;
+      break;
+    case '31':
+    level = 1.3;
+      break;
+    case '30':
+    level = 1.29;
+      break;
+    case '29':
+    level = 1.28;
+      break;
+    case '28':
+    level = 1.27;
+      break;
+    case '27':
+    level = 1.26;
+      break;
+    case '26':
+    level = 1.25;
+      break;
+    case '25':
+    level = 1.24;
+      break;
+    case '24':
+    level = 1.23;
+      break;
+    case '23':
+    level = 1.22;
+      break;
+    case '22':
+    level = 1.21;
+      break;
+    case '21':
+    level = 1.2;
+      break;
+    case '20':
+    level = 1.19;
+      break;
+    case '19':
+    level = 1.18;
+      break;
+    case '18':
+    level = 1.17;
+      break;
+    case '17':
+    level = 1.16;
+      break;
+    case '16':
+    level = 1.15;
+      break;
+    case '15':
+    level = 1.14;
+      break;
+    case '14':
+    level = 1.13;
+      break;
+    case '13':
+    level = 1.12;
+      break;
+    case '12':
+    level = 1.11;
+      break;
+    case '11':
+    level = 1.1;
+      break;
+    case '10':
+    level = 1.09;
+      break;
+    case '9':
+    level = 1.08;
+      break;
+    case '8':
+    level = 1.07;
+      break;
+    case '7':
+    level = 1.06;
+      break;
+    case '6':
+    level = 1.05;
+      break;
+    case '5':
+    level = 1.04;
+      break;
+    case '4':
+    level = 1.03;
+      break;
+    case '3':
+    level = 1.02;
+      break;
+    case '2':
+    level = 1.1;
+      break;
+    case '1':
+    level = 1;
+      break;
     default:
     level = 0;
   }
-    let fastscore_value =  Math.ceil(lastscore / level);
-    let level100_value = Math.ceil(fastscore_value / 1.15);
+    //計算
+    let fastscore_value =  Math.ceil(lastscore_value / level);
+    let scorebonus_value = Math.ceil(fastscore_value / 1.15);
+    let level100_value = Math.floor(fastscore_value * bonus);
+    //カンマ区切り
     fastscore_value = Number(fastscore_value).toLocaleString();
+    scorebonus_value = Number(scorebonus_value).toLocaleString();
     level100_value = Number(level100_value).toLocaleString();
+    //表示
     document.getElementById('fastscore').value = fastscore_value;
+    document.getElementById('scorebonus').value = scorebonus_value;
     document.getElementById('level100').value = level100_value;
+
+    //Cookie保存
+    // document.cookie = "lastscore=" + encodeURIComponent(lastscore);
+    // document.cookie = "level=" + encodeURIComponent(level_save);
+    // console.log(document.cookie);
+    
+    setCookie("lastscore", encodeURIComponent(lastscore), 365); // 1年間有効なCookie
+    setCookie("level", encodeURIComponent(level_save), 365); // 1年間有効なCookie
+}
+
+//Cookieに値を設定する関数
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 365 * 24 * 60 * 60 * 1000)); // 1年間のミリ秒数
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+//読み込み時に実行する
+window.onload = loadFormData;
+function loadFormData() {
+  var cookies = document.cookie.split(';');
+  var formData = {};
+
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim().split('=');
+    formData[cookie[0]] = decodeURIComponent(cookie[1]);
+  }
+
+  //フォームにデータをセットする
+  if (formData.lastscore) {
+    document.getElementById('score').value = formData.lastscore;
+  }
+  if (formData.level) {
+    document.getElementById('level').value = formData.level;
+  }
 }
