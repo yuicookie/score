@@ -3,7 +3,9 @@ function calc(lastscore, level) {
   oku = lastscore;
   man = lastscore;
   num = lastscore;
-  lastscore_value = 0;
+  emu = lastscore;
+  lastscore_value = lastscore;
+
   if (oku.includes('億')) {
     oku1 = oku.substr(0, oku.indexOf('億'));
     oku1 = oku1 * 100000000;
@@ -22,6 +24,12 @@ function calc(lastscore, level) {
     num1 = num.substr(num.indexOf('万') + 1)
     num2 = num1 * 1;
     lastscore_value = oku1 + man2 + num2;
+  }
+
+  if (emu.includes('M')) {
+    emu1 = emu.substr(0, oku.indexOf('M'));
+    emu1 = emu1 * 1000000;
+    lastscore_value = emu1;
   }
 
   bonus = 1.54;
